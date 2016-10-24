@@ -1,4 +1,3 @@
-#include "apue.2e/include/apue.h"
 #include <sys/times.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -33,13 +32,13 @@ int main(int argc, char *argv[])
 	}
 	if(target_file == -1)
 	{
-		printf("cannot create new file\n"); exit(11);
+		printf("cannot create new file\n"); exit(1);
 	}
 
 	//Read from STDIN to buffer
 	if((seek_res = lseek(STDIN_FILENO, 0, 2)) == -1)
 	{
-		printf("STDIN_FILENO seek error\n"); exit(13);
+		printf("STDIN_FILENO seek error\n"); exit(1);
 	}else
 	{
 		lseek(STDIN_FILENO, 0, 0);
@@ -47,12 +46,12 @@ int main(int argc, char *argv[])
 		printf("File length: %zu\n",file_len);
 		if((buf = malloc(file_len)) == NULL)
 		{
-			printf("malloc error\n"); exit(20);
+			printf("malloc error\n"); exit(1);
 		}else
 		{
 			if(read(STDIN_FILENO, buf, file_len) == -1)
 			{
-				printf("read error\n"); exit(12);
+				printf("read error\n"); exit(1);
 			}
 		}
 	}
@@ -82,26 +81,26 @@ static void write_test(int fd, void *src, size_t file_len)
 		//Set current file offset to 0
 		if(lseek(fd, 0, 0) == -1)
 		{
-			printf("seek error while writing\n"); exit(13);
+			printf("seek error while writing\n"); exit(1);
 		}
 		if((start = times(&tms_start)) == -1)
 		{
-			printf("times error\n"); exit(30);
+			printf("times error\n"); exit(1);
 		}
 		for(loop_count = 0;loop_count < loop_time;loop_count++)
 		{
 			if(write(fd, (char *)src + (loop_count * buffer_size), buffer_size) != buffer_size)
 			{
-				printf("write error\n"); exit(10);
+				printf("write error\n"); exit(1);
 			}
 		}
 		if(write(fd, (char *)src + loop_time * buffer_size, file_len % buffer_size) != file_len % buffer_size)
 		{
-			printf("write error\n"); exit(10);
+			printf("write error\n"); exit(1);
 		}
 		if((end = times(&tms_end)) == -1)
 		{
-			printf("times error\n"); exit(30);
+			printf("times error\n"); exit(1);
 		}
 		if(file_len % buffer_size != 0)
 		{
@@ -122,7 +121,7 @@ static void report_result(int buffer_size, clock_t real, struct tms *tms_start, 
 	{
 		if((clktck = sysconf(_SC_CLK_TCK)) < 0)
 		{
-			printf("sysconf error\n"); exit(31);
+			printf("sysconf error\n"); exit(1);
 		}
 	}
 
