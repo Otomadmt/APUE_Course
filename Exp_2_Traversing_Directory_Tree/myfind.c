@@ -6,8 +6,6 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include "apue.h"
-#include "error.c"
-#include "pathalloc.c"
 
 /* Function types which are called for each filename. */
 typedef int myFindFunc(const char *, const struct stat *, int);
