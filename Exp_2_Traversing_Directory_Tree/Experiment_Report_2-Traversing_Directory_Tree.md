@@ -14,18 +14,17 @@
 
 功能：
 
-*```
-myfind <pathname>```
+* ```myfind <pathname>```
 
   统计 \<pathname> 及其目录子树下各类文件所占比例，并统计长度不大于4096字节的普通文件占所有允许访问的普通文件的百分比，不允许打印任何路径。
 
 
-* myfind \<pathname> -comp \<filename>
+* ```myfind \<pathname> -comp \<filename>```
 
   输出在 \<pathname> 及其目录子树下所有与 \<filename> 文件内容一致的文件的绝对路径。其中 \<filename> 为一个常规文件的路径。
 
 
-* myfind \<pathname> -name \<str>…
+* ```myfind \<pathname> -name \<str>…```
 
   输出在 \<pathname> 及其目录子树下所有文件名与 \<str> 序列中某一字符串相同的文件的绝对路径。   
 
@@ -85,51 +84,51 @@ myfind <pathname>```
 
 在 CentOS Release 5.1.1 环境下采用 gcc 4.1.2 进行编译，工作目录为 /home/cs14/csunix/homework/2 .
 
-测试命令： ./myfind /
+测试命令： ```./myfind /```
 
 输出结果：
-
-regular files  =  114285, 84.34 %<br/>
-<=4096B in reg =   80117, 70.10 %<br/>
-directories    =   14883, 10.98 %<br/>
-block special  =      34,  0.03 %<br/>
-char special   =     162,  0.12 %<br/>
-FIFOs          =       3,  0.00 %<br/>
-symbolic links =    6129,  4.52 %<br/>
+```
+regular files  =  114285, 84.34 %
+<=4096B in reg =   80117, 70.10 %
+directories    =   14883, 10.98 %
+block special  =      34,  0.03 %
+char special   =     162,  0.12 %
+FIFOs          =       3,  0.00 %
+symbolic links =    6129,  4.52 %
 sockets        =      11,  0.01 %
-
-测试命令： ./myfind . -comp ./testfile/new
+```
+测试命令： ```./myfind . -comp ./testfile/new```
 
 输出结果：
-
+```
 Matching content of './testfile/new':
 /home/cs14/csunix/homework/2/testfile/testfile_new
 /home/cs14/csunix/homework/2/testfile/newb_3copy
 /home/cs14/csunix/homework/2/testfile/subtree/testfile_new
 /home/cs14/csunix/homework/2/testfile/subtree/new
-/home/cs14/csunix/homework/2/testfile/newb<br/>
+/home/cs14/csunix/homework/2/testfile/newb
 5 match(es)found.
-
-测试命令： ./myfind . -name new newb ntsm
+```
+测试命令： ```./myfind . -name new newb ntsm```
 
 输出结果：
-
+```
 3 filename(s) to match:
 
 Matching filename 'new'(1/3):
 /home/cs14/csunix/homework/2/testfile/subtree/new
-/home/cs14/csunix/homework/2/testfile/new<br/>
+/home/cs14/csunix/homework/2/testfile/new
 2 match(es) found.
 
 Matching filename 'newb'(2/3):
-/home/cs14/csunix/homework/2/testfile/newb<br/>
+/home/cs14/csunix/homework/2/testfile/newb
 1 match(es) found.
 
 Matching filename 'ntsm'(3/3):
 /home/cs14/csunix/homework/2/testfile/subtree/ntsm
-/home/cs14/csunix/homework/2/testfile/ntsm<br/>
+/home/cs14/csunix/homework/2/testfile/ntsm
 2 match(es) found.
-
+```
 测试时所使用的 testfile 文件夹已上传。
 
 ##### 5) 实验体会
