@@ -5,9 +5,8 @@
 #include <string.h>
 #include <unistd.h>
 #include <fcntl.h>
-#include "apue.h"
-#include "error.c"
-#include "pathalloc.c"
+#include "../apue.2e/include/apue.h"
+#include "../apue.2e/include/error.c"
 
 /* Function types which are called for each filename. */
 typedef int myFindFunc(const char *, const struct stat *, int);
